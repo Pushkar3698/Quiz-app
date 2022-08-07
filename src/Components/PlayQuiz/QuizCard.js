@@ -2,13 +2,21 @@ import React from "react";
 
 // this component will display our answers to the user which has a handler function which will select the answer we need and lift the state up //
 
-const AnswerCard = ({ id, answer, correct, getAnswerHandler }) => {
+const AnswerCard = ({ id, answer, correct, getAnswerHandler, selectedId }) => {
+  const onclickHandler = () => {
+    getAnswerHandler(answer, correct, id);
+  };
+
   return (
     <div
       className="quiz-option-container"
-      onClick={() => getAnswerHandler(answer, correct)}
+      onClick={onclickHandler}
+      style={{ background: `${selectedId === id ? "green" : " "}` }}
     >
-      <input type="radio" name="" id="" />
+      <span
+        className="answer-circle"
+        style={{ background: `${selectedId === id ? "blue" : " "}` }}
+      ></span>
       <p>{answer}</p>
     </div>
   );
@@ -23,6 +31,7 @@ export const QuizCard = ({
   answers,
   getAnswerHandler,
   length,
+  selectedId,
 }) => {
   return (
     <div className="play-quiz-questions">
@@ -39,6 +48,7 @@ export const QuizCard = ({
             correct={el.correct}
             answer={el.answer}
             getAnswerHandler={getAnswerHandler}
+            selectedId={selectedId}
           />
         ))}
       </div>

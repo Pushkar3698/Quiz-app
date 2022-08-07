@@ -10,6 +10,19 @@ a {
 li {
   list-style: none;
 }
+
+/* answer circle */
+
+.answer-circle {
+  width: 15px;
+  height: 15px;
+  border: 2px solid black;
+  background-color: white;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+/*  */
+
 /* navbar */
 
 .navbar {

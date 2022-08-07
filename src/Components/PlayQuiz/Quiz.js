@@ -73,13 +73,13 @@ export const Quiz = () => {
 
   //  this handler will change our selected answers if we select again and again and set them in the state //
 
-  const getAnswerHandler = (answer, correct) => {
+  const getAnswerHandler = (answer, correct, id) => {
     const Answer = {
       answer: answer,
       isCorrect: correct,
+      id: id,
     };
     setfinalAnswer(Answer);
-    console.log(Answer);
   };
 
   // these our the states and data which is to be shown and played //
@@ -101,6 +101,7 @@ export const Quiz = () => {
           answers={answers}
           getAnswerHandler={getAnswerHandler}
           length={quiz.length}
+          selectedId={finalAnswer.id ? finalAnswer.id : ""}
         />
       </div>
       {showModal && <ResultModel name={name} />}
